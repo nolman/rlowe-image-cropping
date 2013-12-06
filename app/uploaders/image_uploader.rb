@@ -10,9 +10,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def manually_croped
-     return unless model.cropping?
      manipulate! do |img| 
-       img = img.crop(model.crop_x.to_i,model.crop_y.to_i,model.crop_h.to_i,model.crop_w.to_i) 
+       if model.cropping?
+         img = img.crop(model.crop_x.to_i,model.crop_y.to_i,model.crop_h.to_i,model.crop_w.to_i)
+       end
        img = img.resize_to_fit(200, 200)
      end 
    end
