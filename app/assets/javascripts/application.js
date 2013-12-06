@@ -26,6 +26,7 @@ $(document).ready(function () {
       $(imageDisplay).Jcrop({
         onChange: update_crop,
         onSelect: update_crop,
+        boxWidth: 500,
         aspectRatio: 1
       });;
     }
