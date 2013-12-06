@@ -24,10 +24,10 @@ $(document).ready(function () {
       imageContainer.html(imageDisplay)
       imageContainer.show();
       $(imageDisplay).Jcrop({
-          onChange: update_crop,
-          onSelect: update_crop,
-          aspectRatio: 1
-        });;
+        onChange: update_crop,
+        onSelect: update_crop,
+        aspectRatio: 1
+      });;
     }
   });
 });
