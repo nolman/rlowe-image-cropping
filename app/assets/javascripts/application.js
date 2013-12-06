@@ -15,6 +15,8 @@
 //= require_tree .
 
 $(document).ready(function () {
+  var ratio = 1;
+
   $(".picture-field").on("change", function(event){
     console.log(event.target.files[0].type)
     if (event.target.files.length == 1 && event.target.files[0].type.indexOf("image/") == 0) {
@@ -27,16 +29,15 @@ $(document).ready(function () {
         onChange: update_crop,
         onSelect: update_crop,
         boxWidth: 500,
-        aspectRatio: 1
+        aspectRatio: ratio
       });;
     }
   });
-});
 
-function update_crop(coords) {
-  var ratio = 1;
-  $("#crop_x").val(Math.round(coords.x * ratio));
-  $("#crop_y").val(Math.round(coords.y * ratio));
-  $("#crop_w").val(Math.round(coords.w * ratio));
-  $("#crop_h").val(Math.round(coords.h * ratio));
-}
+  function update_crop(coords) {
+    $("#crop_x").val(Math.round(coords.x * ratio));
+    $("#crop_y").val(Math.round(coords.y * ratio));
+    $("#crop_w").val(Math.round(coords.w * ratio));
+    $("#crop_h").val(Math.round(coords.h * ratio));
+  }
+});
