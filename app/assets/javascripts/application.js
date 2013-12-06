@@ -34,7 +34,7 @@ $(document).ready(function () {
 });
 
 function update_crop(coords) {
-  var ration = 1;
+  var ratio = 1;
   $("#crop_x").val(Math.round(coords.x * ratio));
   $("#crop_y").val(Math.round(coords.y * ratio));
   $("#crop_w").val(Math.round(coords.w * ratio));
