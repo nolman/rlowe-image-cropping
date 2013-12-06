@@ -2,7 +2,7 @@
   <% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
     <%= f.hidden_field attribute, :id => attribute %>
   <% end %>
-  <input class='picture-field' type="file" name="files[]">
+  <%= f.file_field(:file, class: "picture-field", accept: 'image/png,image/gif,image/jpeg') %>
   <%= f.submit "Upload" %>
   <div class='image-display'></div>
 <% end %>
