@@ -18,10 +18,14 @@ $(document).ready(function () {
   var ratio = 1;
 
   $(".picture-field").on("change", function(event){
-    console.log(event.target.files[0].type)
-    if (event.target.files.length == 1 && event.target.files[0].type.indexOf("image/") == 0) {
-      var image = event.target.files[0];
-      var imageContainer = $(this).parents("form").find(".image-display");
+    make_cropable_image($(this));
+  });
+  make_cropable_image($(".picture-field"));
+  function make_cropable_image(element){
+    var target = element[0];
+    if (target.files.length == 1 && target.files[0].type.indexOf("image/") == 0) {
+      var image = target.files[0];
+      var imageContainer = $(element).parents("form").find(".image-display");
       imageDisplay = $("<img/>").attr("src", URL.createObjectURL(image));
       imageContainer.html(imageDisplay)
       imageContainer.show();
@@ -32,7 +36,7 @@ $(document).ready(function () {
         aspectRatio: ratio
       });;
     }
-  });
+  }
 
   function update_crop(coords) {
     $("#crop_x").val(Math.round(coords.x * ratio));
